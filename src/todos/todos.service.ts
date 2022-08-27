@@ -1,13 +1,12 @@
-import { Injectable } from '@nestjs/common';
 import { Item } from './todo.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateItemDto } from './dto/create-todo';
 
-@Injectable()
+@InjectModel()
 
 export class ItemsService {
-    constructor(@InjectModel('Todo') readonly todoModel: Model<void>) {}
+    constructor(@InjectModel('Todo') readonly todoModel: Model<any>) {}
     async findAll(): Promise<Item[]> {
       return await this.todoModel.find();
     }
