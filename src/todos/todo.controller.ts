@@ -7,9 +7,9 @@ import {
     Body,
     Param,
   } from '@nestjs/common';
-  import { CreateTodoDto } from './dto/create-todo';
-  import { TodosService } from './todos.service';
-  import { Todo } from './interfaces/todo.interface';
+  import { CreateItemDto } from './dto/create-todo';
+  import { ItemsService } from './todos.service';
+  import { Item } from './todo.interface';
   
   @Controller('items')
   
@@ -23,21 +23,21 @@ import {
     
     @Get(':id')
     findOne(@Param('id') id): Promise {
-      return this.todosService.findOne(id);
+      return this.itemsService.findOne(id);
     }
     
     @Post()
-    create(@Body() createTodoDto: CreateTodoDto): Promise {
-      return this.todosService.create(createTodoDto);
+    create(@Body() createItemDto: CreateItemDto): Promise {
+      return this.itemsService.create(CreateItemDto);
     }
     
     @Delete(':id')
     delete(@Param('id') id): Promise {
-      return this.todosService.delete(id);
+      return this.itemsService.delete(id);
     }
     
     @Put(':id')
-    update(@Body() updateTodoDto: CreateTodoDto, @Param('id') id): Promise {
-      return this.todosService.update(id, updateTodoDto);
+    update(@Body() updateTodoDto: CreateItemDto, @Param('id') id): Promise {
+      return this.itemsService.update(id, updateTodoDto);
     }
   }
