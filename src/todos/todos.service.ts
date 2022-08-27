@@ -11,17 +11,17 @@ export class ItemsService {
     async findAll(): Promise<Todo[]> {
       return await this.todoModel.find();
     }
-    async findOne(id: string): Promise {
+    async findOne(id: string): Promise<void> {
       return await this.todoModel.findOne({ _id: id });
     }
-    async create(item: CreateItemDto): Promise {
+    async create(item: CreateItemDto): Promise<void> {
       const newTodo = new this.todoModel(item);
       return await newTodo.save();
     }
-    async delete(id: string): Promise {
+    async delete(id: string): Promise<void> {
       return await this.todoModel.findByIdAndRemove(id);
     }
-    async update(id: string, todo: CreateTodoDto): Promise {
+    async update(id: string, todo: CreateTodoDto): Promise<void> {
       return await this.todoModel.findByIdAndUpdate(id, todo, { new: true });
     }
   }

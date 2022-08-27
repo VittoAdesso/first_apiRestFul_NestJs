@@ -14,30 +14,30 @@ import {
   @Controller('items')
   
   export class ItemsController {
-    constructor(private readonly todosService: TodosService) {}
+    constructor(private readonly itemsService: ItemsService) {}
   
     @Get()
-    findAll(): Promise<Todo[]> {
-      return this.todosService.findAll();
+    findAll(): Promise<Item[]> {
+      return this.itemsService.findAll();
     }
     
     @Get(':id')
-    findOne(@Param('id') id): Promise {
+    findOne(@Param('id') id): Promise<void> {
       return this.itemsService.findOne(id);
     }
     
     @Post()
-    create(@Body() createItemDto: CreateItemDto): Promise {
-      return this.itemsService.create(CreateItemDto);
+    create(@Body() createItemDto: CreateItemDto): Promise<void> {
+    return this.itemsService.create(CreateItemDto);
     }
     
     @Delete(':id')
-    delete(@Param('id') id): Promise {
+    delete(@Param('id') id): Promise<void> {
       return this.itemsService.delete(id);
     }
     
     @Put(':id')
-    update(@Body() updateTodoDto: CreateItemDto, @Param('id') id): Promise {
+    update(@Body() updateTodoDto: CreateItemDto, @Param('id') id): Promise<void> {
       return this.itemsService.update(id, updateTodoDto);
     }
   }
