@@ -22,13 +22,13 @@ import {
     }
     
     @Get(':id')
-    findOne(@Param('id') id): Promise<void> {
-      return this.itemsService.findOne(id);
-    }
+    // findOne(@Param('id') id): Promise<void> {
+    //   return this.itemsService.findOne(id);
+    // }
     
     @Post()
     create(@Body() createItemDto: CreateItemDto): Promise<void> {
-    return this.itemsService.create(CreateItemDto);
+    return this.itemsService.create(createItemDto);
     }
     
     @Delete(':id')
